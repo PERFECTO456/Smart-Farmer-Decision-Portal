@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Farmer Decision Support Portal</title>
+  
+  <!-- Google Fonts & Font Awesome Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="icon" type="image/png" href="https://png.pngtree.com/png-vector/20210206/ourmid/pngtree-leaf-circle-icon-design-template-vector-isolated-png-image_2889871.jpg">
+  <!-- Custom External Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-theme="light">
+
+  <!-- ==========================================
+       MAIN NAVIGATION HEADER
+       ========================================== -->
+  <header>
+    <div class="navbar">
+      <div class="logo" onclick="navigateTo('home')">
+        <i class="fas fa-seedling"></i> AgriSmart Portal
+      </div>
+      
+      <ul class="nav-links" id="navLinks">
+        <li><a onclick="navigateTo('home')" data-target="home" class="active"><i class="fas fa-house"></i> Home</a></li>
+        <li><a onclick="navigateTo('disease')" data-target="disease"><i class="fas fa-leaf"></i> Disease</a></li>
+        <li><a onclick="navigateTo('weather')" data-target="weather"><i class="fas fa-cloud-sun"></i> Weather</a></li>
+        <li><a onclick="navigateTo('fertilizer')" data-target="fertilizer"><i class="fas fa-flask"></i> Fertilizer</a></li>
+        <li><a onclick="navigateTo('market')" data-target="market"><i class="fas fa-chart-line"></i> Market</a></li>
+        <li><a onclick="navigateTo('schemes')" data-target="schemes"><i class="fas fa-landmark"></i> Schemes</a></li>
+        <li><a onclick="navigateTo('cropinfo')" data-target="cropinfo"><i class="fas fa-wheat-awn"></i> Crops</a></li>
+        <li><a onclick="navigateTo('calendar')" data-target="calendar"><i class="fas fa-calendar-days"></i> Calendar</a></li>
+        <li><a onclick="navigateTo('contact')" data-target="contact"><i class="fas fa-envelope"></i> Contact</a></li>
+        <li><a onclick="navigateTo('credits')" data-target="credits"><i class="fas fa-users"></i> Credits</a></li>
+      </ul>
+      
+      <div class="nav-controls">
+        <button class="theme-toggle" id="themeBtn" onclick="toggleTheme()" title="Toggle Dark/Light Theme">
+          <i class="fas fa-moon"></i>
+        </button>
+        <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==========================================
+       PAGE 1: HOME (DASHBOARD)
+       ========================================== -->
+  <main class="page-section active" id="home">
+    <section class="hero">
+      <div class="hero-content">
+        <div>
+          <h1>Smart Farming,<br>Smarter Decisions 🌾</h1>
+          <p>An integrated AI-assisted decision portal designed to help modern farmers detect crop diseases, optimize fertilizer usage, monitor live market price trends, and explore government agricultural subsidies.</p>
+          <div class="hero-buttons">
+            <button class="btn btn-primary" onclick="navigateTo('decision')"><i class="fas fa-robot"></i> AI Decision Hub</button>
+            <button class="btn btn-outline" onclick="navigateTo('disease')"><i class="fas fa-microscope"></i> Detect Disease</button>
+          </div>
+          <div class="hero-metrics">
+            <div><span>7+</span><small>Major Crops</small></div>
+            <div><span>6</span><small>Plant Diseases</small></div>
+            <div><span>10+</span><small>AI Advisory Tools</small></div>
+            <div><span>100%</span><small>Free Access</small></div>
+          </div>
+        </div>
+        <div class="hero-illustration">
+          <i class="fas fa-tractor"></i>
+        </div>
+      </div>
+    </section>
+
+    <div class="container">
+      <h2 class="section-heading">Explore Portal Features</h2>
+      <p class="section-subtitle">Select any tool below to start optimizing your agricultural practices</p>
+      
+      <div class="grid grid-4">
+        <div class="card feature-item" onclick="navigateTo('disease')">
+          <i class="fas fa-leaf"></i>
+          <h3>Disease Detection</h3>
+          <p>Upload plant leaf images for instant AI diagnosis and treatment plans</p>
+        </div>
+        <div class="card feature-item" onclick="navigateTo('weather')">
+          <i class="fas fa-cloud-sun-rain"></i>
+          <h3>Weather Forecast</h3>
+          <p>Check 5-day weather forecasts with smart farming advisories</p>
+        </div>
+        <div class="card feature-item" onclick="navigateTo('fertilizer')">
+          <i class="fas fa-flask"></i>
+          <h3>Fertilizer Advisor</h3>
+          <p>Generate tailored NPK nutrient plans based on soil testing</p>
+        </div>
+        <div class="card feature-item" onclick="navigateTo('market')">
+          <i class="fas fa-chart-line"></i>
+          <h3>Market Insights</h3>
+          <p>Track live mandi prices, view graphs, and get sell/hold signals</p>
+        </div>
+        <div class="card feature-item" onclick="navigateTo('schemes')">
+          <i class="fas fa-landmark"></i>
+          <h3>Govt Schemes</h3>
+          <p>Search subsidies, crop insurance, and farmer welfare programs</p>
+        </div>
+        <div class="card feature-item" onclick="navigateTo('cropinfo')">
+          <i class="fas fa-wheat-awn"></i>
+          <h3>Crop Guide Library</h3>
+          <p>Read comprehensive growing instructions for major Indian crops</p>
+        </div>
+        <div class="card feature-item" onclick="navigateTo('calendar')">
+          <i class="fas fa-calendar-days"></i>
+          <h3>Farming Calendar</h3>
+          <p>Review month-wise sowing, weeding, and harvesting schedules</p>
+        </div>
+        <div class="card feature-item" onclick="navigateTo('decision')">
+          <i class="fas fa-robot"></i>
+          <h3>AI Decision System</h3>
+          <p>Receive a complete, multi-factor farm advisory report in seconds</p>
+        </div>
+      </div>
+
+      <h2 class="section-heading">Quick Farm Dashboard</h2>
+      <p class="section-subtitle">Real-time summaries and smart notifications</p>
+      
+      <div class="grid grid-3">
+        <div class="card">
+          <h3><i class="fas fa-cloud-sun"></i> Weather Summary</h3>
+          <div class="weather-card-hero" style="padding: 16px; margin-top: 10px;">
+            <div>
+              <div class="weather-temp" style="font-size: 2.2rem;">28°C</div>
+              <small>Partly Cloudy · Delhi NCR</small>
+            </div>
+            <div class="weather-stats" style="gap: 14px;">
+              <div><i class="fas fa-droplet"></i><small>65%</small></div>
+              <div><i class="fas fa-wind"></i><small>12km/h</small></div>
+              <div><i class="fas fa-umbrella"></i><small>30%</small></div>
+            </div>
+          </div>
+          <button class="btn btn-green" style="margin-top: 14px; width: 100%; justify-content: center;" onclick="navigateTo('weather')">Full 5-Day Forecast</button>
+        </div>
+
+        <div class="card">
+          <h3><i class="fas fa-chart-line"></i> Today's Market Trends</h3>
+          <div class="result-row"><span>Wheat (Gehun)</span><span>₹2,250/q <span class="badge badge-green">↑ 2.3%</span></span></div>
+          <div class="result-row"><span>Rice (Dhan)</span><span>₹3,100/q <span class="badge badge-green">↑ 1.1%</span></span></div>
+          <div class="result-row"><span>Tomato (Tamatar)</span><span>₹1,800/q <span class="badge badge-red">↓ 4.0%</span></span></div>
+          <div class="result-row"><span>Cotton (Kapas)</span><span>₹6,500/q <span class="badge badge-green">↑ 0.8%</span></span></div>
+          <button class="btn btn-green" style="margin-top: 14px; width: 100%; justify-content: center;" onclick="navigateTo('market')">View Interactive Graphs</button>
+        </div>
+
+        <div class="card">
+          <h3><i class="fas fa-landmark"></i> Top Government Schemes</h3>
+          <div class="notification-item" style="margin-top: 10px;">
+            <i class="fas fa-star"></i>
+            <div><b>PM-KISAN Samman Nidhi</b><br><small color="var(--text-muted)">₹6,000/year direct cash transfer</small></div>
+          </div>
+          <div class="notification-item">
+            <i class="fas fa-shield-halved"></i>
+            <div><b>PM Fasal Bima Yojana</b><br><small color="var(--text-muted)">Comprehensive low-premium crop cover</small></div>
+          </div>
+          <button class="btn btn-green" style="margin-top: 8px; width: 100%; justify-content: center;" onclick="navigateTo('schemes')">Explore All Schemes</button>
+        </div>
+      </div>
+
+      <div class="grid grid-2" style="margin-top: 24px;">
+        <div class="tip-banner">
+          <i class="fas fa-lightbulb"></i>
+          <div>
+            <b style="font-size: 1.1rem;">Smart Farming Tip of the Day</b>
+            <p id="homeTipText" style="margin: 8px 0; font-size: 0.95rem;">Loading tip...</p>
+            <button class="btn" style="background-color: rgba(255,255,255,0.25); color: #ffffff; padding: 6px 14px; font-size: 0.85rem;" onclick="refreshFarmingTip()">
+              <i class="fas fa-rotate"></i> Next Tip
+            </button>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3><i class="fas fa-bell"></i> AI Smart Notifications</h3>
+          <div id="homeNotifications"></div>
+        </div>
+      </div>
+
+      <h2 class="section-heading">Latest Agriculture News & Updates</h2>
+      <p class="section-subtitle">Stay informed with recent developments from the agricultural sector</p>
+      <div class="grid grid-2" id="homeNewsList"></div>
+
+      <div class="card" style="margin: 35px 0; background: linear-gradient(135deg, var(--primary-dark), var(--primary)); color: #ffffff; text-align: center;">
+        <h3 style="color: #ffffff; font-size: 1.6rem; justify-content: center;"><i class="fas fa-robot"></i> Need Complete Farm Guidance?</h3>
+        <p style="opacity: 0.92; margin: 10px auto; max-width: 650px;">Use our AI Decision Support System to generate a customized advisory report combining soil health, crop disease risks, weather forecasts, and market trends.</p>
+        <button class="btn btn-primary" style="margin-top: 10px;" onclick="navigateTo('decision')">Launch AI Advisor <i class="fas fa-arrow-right"></i></button>
+      </div>
+    </div>
+  </main>
+
+  <!-- ==========================================
+       PAGE 2: PLANT DISEASE DETECTION
+       ========================================== -->
+  <section class="page-section" id="disease">
+    <div class="page-banner">
+      <h1><i class="fas fa-leaf"></i> Plant Disease Detection</h1>
+      <p>Upload a clear photo of an infected leaf to receive an simulated AI diagnosis with organic and chemical treatment solutions.</p>
+    </div>
+    
+    <div class="container">
+      <div class="grid grid-2">
+        <div class="card">
+          <h3>Upload Leaf Image for Analysis</h3>
+          <label class="upload-zone" for="leafFileInput">
+            <i class="fas fa-cloud-arrow-up"></i>
+            <p style="font-weight: 500;">Click here to upload or capture a leaf photo</p>
+            <small style="color: var(--text-muted);">Supports JPG, PNG, and WebP images</small>
+          </label>
+          <input type="file" id="leafFileInput" accept="image/*" style="display: none;" onchange="previewUploadedImage(event)">
+          
+          <div style="text-align: center;">
+            <img id="previewImage" alt="Leaf Preview">
+          </div>
+          
+          <button class="btn btn-green" style="width: 100%; justify-content: center; margin-top: 16px;" onclick="runDiseaseAnalysis()">
+            <i class="fas fa-microscope"></i> Analyze Image with AI
+          </button>
+        </div>
+
+        <div class="card">
+          <h3>AI Diagnostic Report</h3>
+          <div id="diseaseAnalysisResult">
+            <p style="color: var(--text-muted); text-align: center; margin: 40px 0;">
+              <i class="fas fa-image" style="font-size: 2rem; display: block; margin-bottom: 10px; opacity: 0.5;"></i>
+              Upload an image on the left and click "Analyze Image with AI" to generate a diagnosis report.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <h2 class="section-heading">Common Crop Disease Library</h2>
+      <p class="section-subtitle">Reference guide for identifying frequent crop ailments</p>
+      <div class="grid grid-3" id="diseaseLibraryGrid"></div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       PAGE 3: WEATHER FORECAST & ADVICE
+       ========================================== -->
+  <section class="page-section" id="weather">
+    <div class="page-banner">
+      <h1><i class="fas fa-cloud-sun"></i> Agricultural Weather Forecast</h1>
+      <p>Monitor real-time weather metrics and receive actionable farming advice tailored to upcoming atmospheric conditions.</p>
+    </div>
+    
+    <div class="container">
+      <div class="weather-card-hero">
+        <div>
+          <div class="weather-temp">28°C</div>
+          <div style="font-size: 1.1rem; margin-top: 6px;"><i class="fas fa-cloud-sun"></i> Partly Cloudy · Feels like 30°C</div>
+          <small style="opacity: 0.85;">Location: Agricultural District (Central Region)</small>
+        </div>
+        <div class="weather-stats">
+          <div><i class="fas fa-droplet"></i><span>65%</span><br><small>Humidity</small></div>
+          <div><i class="fas fa-wind"></i><span>12 km/h</span><br><small>Wind Speed</small></div>
+          <div><i class="fas fa-umbrella"></i><span>30%</span><br><small>Rain Prob.</small></div>
+          <div><i class="fas fa-sun"></i><span>6 (High)</span><br><small>UV Index</small></div>
+        </div>
+      </div>
+
+      <h3 style="margin-top: 30px; color: var(--primary-dark);">5-Day Outlook</h3>
+      <div class="forecast-grid" id="weatherForecastCards"></div>
+
+      <div class="card" style="margin-top: 26px;">
+        <h3><i class="fas fa-robot"></i> AI Weather Farming Advisories</h3>
+        <p style="color: var(--text-muted); margin-bottom: 14px; font-size: 0.9rem;">Smart recommendations based on simulated 5-day atmospheric predictions:</p>
+        <div id="weatherAdviceList"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       PAGE 4: FERTILIZER RECOMMENDATION
+       ========================================== -->
+  <section class="page-section" id="fertilizer">
+    <div class="page-banner">
+      <h1><i class="fas fa-flask"></i> Fertilizer & Soil Nutrient Advisor</h1>
+      <p>Enter your soil test values to get customized NPK fertilizer doses, organic alternatives, and soil health scores.</p>
+    </div>
+    
+    <div class="container">
+      <div class="grid grid-2">
+        <div class="card">
+          <h3>Soil & Crop Parameter Input</h3>
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label for="fertCrop">Select Crop</label>
+              <select id="fertCrop">
+                <option value="Rice">Rice (Dhan)</option>
+                <option value="Wheat">Wheat (Gehun)</option>
+                <option value="Tomato">Tomato (Tamatar)</option>
+                <option value="Cotton">Cotton (Kapas)</option>
+                <option value="Maize">Maize (Makka)</option>
+                <option value="Potato">Potato (Aloo)</option>
+                <option value="Sugarcane">Sugarcane (Ganna)</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="fertSoil">Soil Texture Type</label>
+              <select id="fertSoil">
+                <option value="Loamy">Loamy Soil (Best)</option>
+                <option value="Clay">Clay / Heavy Soil</option>
+                <option value="Sandy">Sandy Loam Soil</option>
+                <option value="Black">Black Cotton Soil</option>
+                <option value="Red">Red Alluvial Soil</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="fertN">Nitrogen (N) kg/ha</label>
+              <input type="number" id="fertN" value="40" min="0" max="200">
+            </div>
+            <div class="form-group">
+              <label for="fertP">Phosphorus (P) kg/ha</label>
+              <input type="number" id="fertP" value="20" min="0" max="150">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="fertK">Potassium (K) kg/ha</label>
+              <input type="number" id="fertK" value="30" min="0" max="150">
+            </div>
+            <div class="form-group">
+              <label for="fertPH">Soil pH Value (0 to 14)</label>
+              <input type="number" step="0.1" id="fertPH" value="6.5" min="3" max="10">
+            </div>
+          </div>
+
+          <button class="btn btn-green" style="width: 100%; justify-content: center; margin-top: 10px;" onclick="generateFertilizerPlan()">
+            <i class="fas fa-wand-magic-sparkles"></i> Generate Nutrient Plan
+          </button>
+        </div>
+
+        <div class="card">
+          <h3>Custom Fertilizer Advisory</h3>
+          <div id="fertilizerResultBox">
+            <p style="color: var(--text-muted); text-align: center; margin: 40px 0;">
+              <i class="fas fa-seedling" style="font-size: 2rem; display: block; margin-bottom: 10px; opacity: 0.5;"></i>
+              Enter your soil test numbers on the left and click "Generate Nutrient Plan" to see personalized fertilizer doses.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       PAGE 5: MARKET INSIGHTS & PRICE TRENDS
+       ========================================== -->
+  <section class="page-section" id="market">
+    <div class="page-banner">
+      <h1><i class="fas fa-chart-line"></i> Market Insights & Price Trends</h1>
+      <p>Analyze 7-day mandi price movements, compare top crops, and receive AI-backed recommendations on when to sell or hold.</p>
+    </div>
+    
+    <div class="container">
+      <div style="display: flex; gap: 14px; align-items: center; margin-bottom: 20px; flex-wrap: wrap;">
+        <label for="marketCropSelect" style="margin: 0; font-weight: 600; font-size: 1rem;">Select Crop for Graph Analysis:</label>
+        <select id="marketCropSelect" style="max-width: 220px;" onchange="updateMarketInsights()">
+          <option value="Wheat">Wheat (Gehun)</option>
+          <option value="Rice">Rice (Dhan)</option>
+          <option value="Tomato">Tomato (Tamatar)</option>
+          <option value="Cotton">Cotton (Kapas)</option>
+          <option value="Maize">Maize (Makka)</option>
+          <option value="Potato">Potato (Aloo)</option>
+        </select>
+      </div>
+
+      <div class="grid grid-2">
+        <div class="card">
+          <h3><i class="fas fa-chart-area"></i> 7-Day Mandi Price Trend (₹ / Quintal)</h3>
+          <div style="margin-top: 14px;">
+            <canvas id="priceTrendCanvas" width="540" height="300" style="width: 100%; height: auto;"></canvas>
+          </div>
+        </div>
+        <div class="card" id="marketInsightCard"></div>
+      </div>
+
+      <h2 class="section-heading">Live Mandi Prices (Nearby Markets)</h2>
+      <p class="section-subtitle">Current agricultural produce wholesale rates</p>
+      <div class="card" style="overflow-x: auto;">
+        <table>
+          <thead>
+            <tr>
+              <th>Market Mandi Location</th>
+              <th>Crop Commodity</th>
+              <th>Price (₹ / Quintal)</th>
+              <th>Daily Trend</th>
+            </tr>
+          </thead>
+          <tbody id="mandiTableBody"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       PAGE 6: GOVERNMENT SCHEMES
+       ========================================== -->
+  <section class="page-section" id="schemes">
+    <div class="page-banner">
+      <h1><i class="fas fa-landmark"></i> Government Agricultural Schemes</h1>
+      <p>Discover federal and state financial subsidies, crop insurance programs, and low-interest farmer credit facilities.</p>
+    </div>
+    
+    <div class="container">
+      <div class="card">
+        <div class="grid grid-4">
+          <div class="form-group" style="margin: 0;">
+            <label for="schemeSearchInput">Search Keywords</label>
+            <input type="text" id="schemeSearchInput" placeholder="Search by scheme name or benefit..." oninput="filterGovernmentSchemes()">
+          </div>
+          <div class="form-group" style="margin: 0;">
+            <label for="schemeStateSelect">Filter by State</label>
+            <select id="schemeStateSelect" onchange="filterGovernmentSchemes()">
+              <option value="All">All States / Central</option>
+              <option value="Punjab">Punjab</option>
+              <option value="Maharashtra">Maharashtra</option>
+              <option value="Uttar Pradesh">Uttar Pradesh</option>
+              <option value="Karnataka">Karnataka</option>
+              <option value="All India">All India (National)</option>
+            </select>
+          </div>
+          <div class="form-group" style="margin: 0;">
+            <label for="schemeCropSelect">Target Crop</label>
+            <select id="schemeCropSelect" onchange="filterGovernmentSchemes()">
+              <option value="All">All Crops</option>
+              <option value="Rice">Rice</option>
+              <option value="Wheat">Wheat</option>
+              <option value="Cotton">Cotton</option>
+            </select>
+          </div>
+          <div class="form-group" style="margin: 0;">
+            <label for="schemeCategorySelect">Farmer Land Category</label>
+            <select id="schemeCategorySelect" onchange="filterGovernmentSchemes()">
+              <option value="All">All Farmer Categories</option>
+              <option value="Small">Small Farmers (&lt; 2 ha)</option>
+              <option value="Marginal">Marginal Farmers (&lt; 1 ha)</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid grid-2" id="schemesGridContainer" style="margin-top: 24px;"></div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       PAGE 7: CROP INFORMATION LIBRARY
+       ========================================== -->
+  <section class="page-section" id="cropinfo">
+    <div class="page-banner">
+      <h1><i class="fas fa-wheat-awn"></i> Crop Growing Guide Library</h1>
+      <p>Complete botanical and agricultural reference profiles including soil types, water requirements, diseases, and yield expectations.</p>
+    </div>
+    
+    <div class="container">
+      <div style="max-width: 450px; margin: 0 auto 30px;">
+        <input type="text" id="cropSearchInput" placeholder="🔍 Filter crops (e.g., rice, wheat, tomato...)" oninput="searchCropGuides()" style="padding: 14px; border-radius: 30px; box-shadow: var(--box-shadow);">
+      </div>
+      
+      <div class="grid grid-3" id="cropGuidesGrid"></div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       PAGE 8: FARMING CALENDAR
+       ========================================== -->
+  <section class="page-section" id="calendar">
+    <div class="page-banner">
+      <h1><i class="fas fa-calendar-days"></i> Annual Farming Calendar</h1>
+      <p>Review month-by-month agricultural schedules from land preparation and seed nursery to harvesting and threshing.</p>
+    </div>
+    
+    <div class="container">
+      <div style="display: flex; gap: 14px; align-items: center; margin-bottom: 24px; justify-content: center; flex-wrap: wrap;">
+        <label for="calendarCropSelect" style="margin: 0; font-weight: 600; font-size: 1.05rem;">Select Crop Schedule:</label>
+        <select id="calendarCropSelect" style="max-width: 240px; padding: 10px;" onchange="updateFarmingCalendar()">
+          <option value="Rice">Rice (Kharif Season)</option>
+          <option value="Wheat">Wheat (Rabi Season)</option>
+          <option value="Tomato">Tomato (Annual Vegetable)</option>
+          <option value="Cotton">Cotton (Commercial Crop)</option>
+          <option value="Maize">Maize (Cereal Crop)</option>
+        </select>
+      </div>
+
+      <div class="grid grid-3" id="calendarMonthsGrid"></div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       PAGE 9: CONTACT & OFFICE DETAILS
+       ========================================== -->
+  <section class="page-section" id="contact">
+    <div class="page-banner">
+      <h1><i class="fas fa-envelope"></i> Contact Agriculture Support</h1>
+      <p>Get in touch with our expert agronomists, report technical issues, or request partnership information.</p>
+    </div>
+    
+    <div class="container">
+      <div class="grid grid-2">
+        <div class="card">
+          <h3>Send Us a Message</h3>
+          <form id="contactForm" onsubmit="return handleContactSubmit(event)">
+            <div class="form-group">
+              <label for="contactName">Full Name</label>
+              <input type="text" id="contactName" placeholder="Enter your full name">
+              <span class="error-text" id="errName"></span>
+            </div>
+            <div class="form-group">
+              <label for="contactEmail">Email Address</label>
+              <input type="email" id="contactEmail" placeholder="farmer@example.com">
+              <span class="error-text" id="errEmail"></span>
+            </div>
+            <div class="form-group">
+              <label for="contactSubject">Subject / Topic</label>
+              <input type="text" id="contactSubject" placeholder="e.g., Question about soil testing">
+              <span class="error-text" id="errSubject"></span>
+            </div>
+            <div class="form-group">
+              <label for="contactMessage">Your Message</label>
+              <textarea id="contactMessage" rows="4" placeholder="Describe your farming query or portal feedback..."></textarea>
+              <span class="error-text" id="errMessage"></span>
+            </div>
+            <button type="submit" class="btn btn-green" style="width: 100%; justify-content: center; margin-top: 10px;">
+              <i class="fas fa-paper-plane"></i> Submit Inquiry
+            </button>
+            <div id="contactSuccessBox"></div>
+          </form>
+        </div>
+
+        <div>
+          <div class="card">
+            <h3>Headquarters Office</h3>
+            <div class="result-row"><span><i class="fas fa-location-dot"></i> Address</span><span>Parul University</span></div>
+            <div class="result-row"><span><i class="fas fa-phone"></i> Helpline Phone</span><span>+91 7044538172</span></div>
+            <div class="result-row"><span><i class="fas fa-envelope"></i> Support Email</span><span>techlead@paruluniversity.ac.in</span></div>
+            
+            <h3 style="margin-top: 20px;">Working Hours</h3>
+            <div class="result-row"><span>Monday to Friday</span><span>9:00 AM - 6:00 PM IST</span></div>
+            <div class="result-row"><span>Saturday</span><span>10:00 AM - 2:00 PM IST</span></div>
+            <div class="result-row"><span>Sunday & Holidays</span><span>Closed</span></div>
+
+            <h3 style="margin-top: 20px;">Connect on Social Media</h3>
+            <div class="social-links" style="margin-top: 10px;">
+              <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+              <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+              <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
+              <a href="#" title="WhatsApp Community"><i class="fab fa-whatsapp"></i></a>
+            </div>
+          </div>
+
+          <div class="card" style="margin-top: 20px; text-align: center;">
+            <h3>Office Location Map</h3>
+            <div style="background-color: var(--bg-color); border-radius: 10px; padding: 45px 20px; color: var(--text-muted); border: 1px dashed var(--border-color); margin-top: 10px;">
+              <i class="fas fa-map-location-dot" style="font-size: 3rem; color: var(--primary); margin-bottom: 10px;"></i>
+              <p style="font-weight: 500;">Interactive GIS Map Placeholder</p>
+              <small>Latitude: 28.6139° N, Longitude: 77.2090° E</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       PAGE 10: AI DECISION SUPPORT SYSTEM (SPECIAL)
+       ========================================== -->
+  <section class="page-section" id="decision">
+    <div class="page-banner" style="background: linear-gradient(135deg, #1b5e20, #f9a825);">
+      <h1><i class="fas fa-robot"></i> AI Decision Support System</h1>
+      <p>Answer 4 quick agricultural questions to generate an integrated advisory combining crop health, weather risks, and market pricing.</p>
+    </div>
+    
+    <div class="container">
+      <div class="grid grid-2">
+        <div class="card">
+          <h3>Farmer Profile Input</h3>
+          
+          <div class="form-group">
+            <label for="decisionCrop">1. What crop are you growing?</label>
+            <select id="decisionCrop">
+              <option value="Rice">Rice (Dhan)</option>
+              <option value="Wheat">Wheat (Gehun)</option>
+              <option value="Tomato">Tomato (Tamatar)</option>
+              <option value="Cotton">Cotton (Kapas)</option>
+              <option value="Maize">Maize (Makka)</option>
+              <option value="Potato">Potato (Aloo)</option>
+              <option value="Sugarcane">Sugarcane (Ganna)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="decisionState">2. Select your State / Region:</label>
+            <select id="decisionState">
+              <option value="Punjab">Punjab</option>
+              <option value="Maharashtra">Maharashtra</option>
+              <option value="Uttar Pradesh">Uttar Pradesh</option>
+              <option value="Karnataka">Karnataka</option>
+              <option value="Rajasthan">Rajasthan</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="decisionSeason">3. Current Agricultural Season:</label>
+            <select id="decisionSeason">
+              <option value="Kharif (Monsoon)">Kharif Season (Monsoon / June-Oct)</option>
+              <option value="Rabi (Winter)">Rabi Season (Winter / Nov-April)</option>
+              <option value="Zaid (Summer)">Zaid Season (Summer / March-June)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="decisionConcern">4. What is your primary challenge?</label>
+            <select id="decisionConcern">
+              <option value="Disease">Pests & Disease Management</option>
+              <option value="Weather">Weather Changes & Irrigation</option>
+              <option value="Fertilizer">Soil Nutrient & Fertilizer Dosage</option>
+              <option value="Market">Market Price & When to Sell</option>
+              <option value="Government Scheme">Finding Subsidies & Grants</option>
+            </select>
+          </div>
+
+          <button class="btn btn-green" style="width: 100%; justify-content: center; margin-top: 14px;" onclick="generateAIAdvisoryReport()">
+            <i class="fas fa-brain"></i> Generate Integrated Advisory Report
+          </button>
+        </div>
+
+        <div class="card">
+          <h3>Generated AI Advisory Report</h3>
+          <div id="aiDecisionReportBox">
+            <p style="color: var(--text-muted); text-align: center; margin: 50px 0;">
+              <i class="fas fa-clipboard-question" style="font-size: 2.5rem; display: block; margin-bottom: 12px; opacity: 0.5;"></i>
+              Complete the 4 questions on the left and click "Generate Integrated Advisory Report" to view your farm decision analysis.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       PAGE 11: CREDITS / DEVELOPMENT TEAM
+       ========================================== -->
+  <section class="page-section" id="credits">
+    <div class="page-banner credits-hero">
+      <!-- Faint leaf and dot-grid background overlay -->
+      <div class="credits-bg-overlay"></div>
+      
+      <div class="credits-hero-inner">
+        <!-- Interactive Animated Header Icon Badge (Tech + Leaf combo) -->
+        <div class="credits-badge-container">
+          <div class="credits-icon-badge" title="Innovation • Technology • Agriculture">
+            <div class="credits-icon-glow"></div>
+            <div class="credits-icon-stacked">
+              <i class="fas fa-microchip tech-chip"></i>
+              <i class="fas fa-leaf glowing-leaf"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Main Heading -->
+        <h1 class="credits-title">
+          <span class="lightbulb-icon">💡</span> Built with Passion. Driven by Innovation.
+        </h1>
+
+        <!-- Quote / Description -->
+        <blockquote class="credits-quote">
+          Behind every intelligent recommendation, responsive interface, and farmer-centric solution is a team committed to making agriculture smarter through technology. Meet the people who collaborated to transform an idea into a practical digital solution for modern farming.
+        </blockquote>
+
+        <!-- Extra Premium Touch: Pill Badge -->
+        <div class="credits-pill-badge">
+          <span class="pill-sprout">🌱</span>
+          <span class="pill-text">Innovation • Collaboration • Smart Agriculture</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="credits-section-wrap">
+      <div class="container">
+        <!-- Lead Developer - Synon Jena (premium card) -->
+        <div class="team-lead-wrap">
+          <div class="lead-card">
+            <div class="lead-crown"><i class="fas fa-crown"></i> LEAD DEVELOPER & PROJECT COORDINATOR</div>
+            <div class="lead-header">
+              <div class="lead-avatar"><i class="fas fa-code"></i></div>
+              <div class="lead-name-block">
+                <h2><i class="fas fa-user-tie" style="margin-right: 6px; color: var(--primary);"></i>Synon Jena</h2>
+                <span class="role-tag"><i class="fas fa-star"></i> Project Lead & Full-Stack Architect</span>
+              </div>
+            </div>
+            <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 10px; position: relative; z-index: 1;">
+              Responsible for overall project vision, architecture design, and integration of all components. Led the frontend build, AI simulation logic, responsive UI/UX, final testing and deployment while coordinating each team member's contributions.
+            </p>
+            <ul class="lead-responsibilities">
+              <li><i class="fas fa-lightbulb"></i> Project Concept & Planning</li>
+              <li><i class="fas fa-pen-ruler"></i> UI/UX Design</li>
+              <li><i class="fas fa-code"></i> Frontend Development (HTML, CSS, JS)</li>
+              <li><i class="fas fa-sitemap"></i> Website Architecture</li>
+              <li><i class="fas fa-robot"></i> AI Feature Integration</li>
+              <li><i class="fas fa-gauge-high"></i> Dashboard Development</li>
+              <li><i class="fas fa-mobile-screen"></i> Responsive Design</li>
+              <li><i class="fas fa-diagram-project"></i> Project Integration</li>
+              <li><i class="fas fa-vial-circle-check"></i> Final Testing</li>
+              <li><i class="fas fa-cloud-arrow-up"></i> Deployment</li>
+              <li><i class="fas fa-people-group"></i> Team Coordination</li>
+              <li><i class="fas fa-bullseye"></i> Quality & Direction</li>
+            </ul>
+          </div>
+        </div>
+
+        <h2 class="section-heading" style="margin-top: 20px;">Core Development Team</h2>
+        <p class="section-subtitle">Talented teammates who contributed modules, research, documentation and quality assurance</p>
+
+        <div class="team-grid">
+          <!-- Rishi Helaiya - Backend -->
+          <div class="team-card" data-animate>
+            <div class="member-avatar avatar-backend"><i class="fas fa-server"></i></div>
+            <h3><i class="fas fa-user-gear"></i> Rishi Helaiya</h3>
+            <span class="member-role-badge badge-backend"><i class="fas fa-gears"></i> Backend & Feature Development</span>
+            <ul class="member-tasks">
+              <li><i class="fas fa-check"></i> Weather Module Support</li>
+              <li><i class="fas fa-check"></i> Market Price Module</li>
+              <li><i class="fas fa-check"></i> Government Schemes Module</li>
+              <li><i class="fas fa-check"></i> API Research</li>
+              <li><i class="fas fa-check"></i> Feature Implementation</li>
+            </ul>
+          </div>
+
+          <!-- Sanchit Sarode - Database & Docs -->
+          <div class="team-card" data-animate>
+            <div class="member-avatar avatar-data"><i class="fas fa-database"></i></div>
+            <h3><i class="fas fa-user-pen"></i> Sanchit Sarode</h3>
+            <span class="member-role-badge badge-data"><i class="fas fa-book"></i> Database & Documentation</span>
+            <ul class="member-tasks">
+              <li><i class="fas fa-check"></i> Database Planning</li>
+              <li><i class="fas fa-check"></i> Data Organization</li>
+              <li><i class="fas fa-check"></i> Project Documentation</li>
+              <li><i class="fas fa-check"></i> Report Preparation</li>
+              <li><i class="fas fa-check"></i> Functional Testing</li>
+            </ul>
+          </div>
+
+          <!-- Aman Singh Solanki - Research & AI -->
+          <div class="team-card" data-animate>
+            <div class="member-avatar avatar-research"><i class="fas fa-microscope"></i></div>
+            <h3><i class="fas fa-user-graduate"></i> Aman Singh Solanki</h3>
+            <span class="member-role-badge badge-research"><i class="fas fa-brain"></i> Research & AI Support</span>
+            <ul class="member-tasks">
+              <li><i class="fas fa-check"></i> Crop Research</li>
+              <li><i class="fas fa-check"></i> Fertilizer Recommendation Research</li>
+              <li><i class="fas fa-check"></i> Disease Detection Research</li>
+              <li><i class="fas fa-check"></i> AI Prompt Support</li>
+              <li><i class="fas fa-check"></i> Content Verification</li>
+            </ul>
+          </div>
+
+          <!-- Shivam Yadav - QA -->
+          <div class="team-card" data-animate>
+            <div class="member-avatar avatar-qa"><i class="fas fa-bug-slash"></i></div>
+            <h3><i class="fas fa-user-shield"></i> Shivam Yadav</h3>
+            <span class="member-role-badge badge-qa"><i class="fas fa-clipboard-check"></i> Quality Assurance & UI Testing</span>
+            <ul class="member-tasks">
+              <li><i class="fas fa-check"></i> UI Testing</li>
+              <li><i class="fas fa-check"></i> Bug Reporting</li>
+              <li><i class="fas fa-check"></i> Cross-Device Testing</li>
+              <li><i class="fas fa-check"></i> Performance Optimization</li>
+              <li><i class="fas fa-check"></i> UX Feedback</li>
+            </ul>
+          </div>
+
+          <!-- Megha Tomar - Content -->
+          <div class="team-card" data-animate>
+            <div class="member-avatar avatar-content"><i class="fas fa-pen-fancy"></i></div>
+            <h3><i class="fas fa-user-pen"></i> Megha Tomar</h3>
+            <span class="member-role-badge badge-content"><i class="fas fa-chalkboard-user"></i> Content & Presentation</span>
+            <ul class="member-tasks">
+              <li><i class="fas fa-check"></i> Content Writing</li>
+              <li><i class="fas fa-check"></i> Presentation Design</li>
+              <li><i class="fas fa-check"></i> User Guide Preparation</li>
+              <li><i class="fas fa-check"></i> Final Review</li>
+              <li><i class="fas fa-check"></i> Project Demonstration Support</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Acknowledgement footer block -->
+        <div class="credits-footer-block">
+          <h3><i class="fas fa-handshake-angle"></i> Project Acknowledgement</h3>
+          <p class="leadership-line">
+            <i class="fas fa-crown" style="color: var(--accent);"></i>
+            <strong>Project Leadership:</strong> Synon Jena
+          </p>
+          <p class="team-line">
+            <i class="fas fa-users" style="color: var(--primary);"></i>
+            <strong>Development Team:</strong> Rishi Helaiya, Sanchit Sarode, Aman Singh Solanki, Shivam Yadav, Megha Tomar
+          </p>
+          <p style="margin-top: 16px; text-align: justify;">
+            This Smart Farmer Decision Support Portal was developed through strong collaborative teamwork, with overall project leadership, architecture, UI/UX design, frontend development, AI feature integration, responsive implementation, final testing and deployment led by <strong>Synon Jena</strong>. Each team member contributed meaningfully to the successful completion of the project through dedicated research, careful documentation, feature support, quality assurance, content preparation, and presentation assistance.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       FOOTER SECTION
+       ========================================== -->
+  <footer>
+    <div class="footer-content">
+      <div>
+        <div class="logo" style="color: #ffffff; margin-bottom: 12px;">
+          <i class="fas fa-seedling"></i> AgriSmart Portal
+        </div>
+        <p style="font-size: 0.88rem; opacity: 0.85; line-height: 1.6;">
+          Empowering rural and modern farmers with simulated AI-assisted decision support tools for sustainable, high-yield agriculture.
+        </p>
+        <div class="social-links" style="margin-top: 16px;">
+          <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
+          <a href="#" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+
+      <div>
+        <h4>Portal Tools</h4>
+        <ul>
+          <li onclick="navigateTo('disease')">Disease Detection</li>
+          <li onclick="navigateTo('weather')">Weather Advisory</li>
+          <li onclick="navigateTo('fertilizer')">Fertilizer Calculator</li>
+          <li onclick="navigateTo('market')">Market Price Trends</li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Agri Resources</h4>
+        <ul>
+          <li onclick="navigateTo('cropinfo')">Crop Guide Library</li>
+          <li onclick="navigateTo('calendar')">Farming Calendar</li>
+          <li onclick="navigateTo('schemes')">Government Schemes</li>
+          <li onclick="navigateTo('decision')">AI Decision Hub</li>
+          <li onclick="navigateTo('credits')"><i class="fas fa-users" style="margin-right: 4px;"></i> Development Team</li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Weekly Newsletter</h4>
+        <p style="font-size: 0.88rem; opacity: 0.85; margin-bottom: 12px;">
+          Subscribe to receive weather alerts and mandi price predictions.
+        </p>
+        <div style="display: flex; gap: 6px;">
+          <input type="email" placeholder="Your email address..." style="padding: 9px 12px; font-size: 0.85rem;">
+          <button class="btn btn-primary" style="padding: 9px 14px;" onclick="alert('Thank you for subscribing to AgriSmart alerts!')">Go</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      © 2026 Smart Farmer Decision Support Portal · Designed with clean HTML5, CSS3 & Vanilla JS for academic & demonstration purposes.
+    </div>
+  </footer>
+
+  <!-- Back To Top Button -->
+  <button id="backToTop" onclick="window.scrollTo({ top: 0, behavior: 'smooth' })" title="Scroll to top">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <!-- Custom External JavaScript -->
+  <script src="script.js"></script>
+</body>
+</html>

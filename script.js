@@ -1,12 +1,3 @@
-/**
- * Smart Farmer Decision Support Portal
- * Main JavaScript File
- * Written in clean, human-readable vanilla JavaScript
- */
-
-// ==========================================
-// 1. DEMO DATA & CONFIGURATION
-// ==========================================
 
 const farmingTips = [
   "Test your soil before applying fertilizer to avoid nutrient imbalance.",
@@ -160,23 +151,15 @@ const farmingCalendar = {
   Maize: { "Jun": "Land preparation and sowing with onset of monsoon", "Jul": "Inter-cultivation, weeding, and earthing up", "Aug": "Tasseling stage irrigation and pest control", "Sep": "Cob development and grain hardening", "Oct": "Harvesting mature cobs and drying", "Nov": "Stalk clearing and field preparation for winter" }
 };
 
-
-// ==========================================
-// 2. NAVIGATION & THEME LOGIC
-// ==========================================
-
 function navigateTo(pageId) {
-  // Hide all pages
   const allPages = document.querySelectorAll('.page-section');
   allPages.forEach(page => page.classList.remove('active'));
 
-  // Show selected page
   const selectedPage = document.getElementById(pageId);
   if (selectedPage) {
     selectedPage.classList.add('active');
   }
 
-  // Update nav link highlighting
   const navLinks = document.querySelectorAll('.nav-links a');
   navLinks.forEach(link => {
     if (link.getAttribute('data-target') === pageId) {
@@ -186,18 +169,14 @@ function navigateTo(pageId) {
     }
   });
 
-  // Close mobile menu if open
   document.getElementById('navLinks').classList.remove('show');
 
-  // Scroll to top
   window.scrollTo({ top: 0, behavior: 'smooth' });
 
-  // Redraw market chart if entering market page
   if (pageId === 'market') {
     updateMarketInsights();
   }
 
-  // Trigger scroll-reveal animations when visiting Credits page
   if (pageId === 'credits') {
     setTimeout(initCreditsAnimations, 120);
   }
@@ -221,13 +200,11 @@ function toggleTheme() {
     themeBtn.innerHTML = '<i class="fas fa-sun"></i>';
   }
 
-  // Redraw market chart with updated colors if visible
   if (document.getElementById('market').classList.contains('active')) {
     updateMarketInsights();
   }
 }
 
-// Show Back to Top button on scroll
 window.addEventListener('scroll', () => {
   const backBtn = document.getElementById('backToTop');
   if (window.scrollY > 350) {
@@ -236,11 +213,6 @@ window.addEventListener('scroll', () => {
     backBtn.style.display = 'none';
   }
 });
-
-
-// ==========================================
-// 3. HOME DASHBOARD FEATURES
-// ==========================================
 
 function refreshFarmingTip() {
   const tipContainer = document.getElementById('homeTipText');
@@ -277,11 +249,6 @@ function renderHomeNews() {
   `).join('');
 }
 
-
-// ==========================================
-// 4. PLANT DISEASE DETECTION
-// ==========================================
-
 function previewUploadedImage(event) {
   const file = event.target.files[0];
   if (!file) return;
@@ -304,11 +271,9 @@ function runDiseaseAnalysis() {
     return;
   }
 
-  // Simulate AI loading state
   resultContainer.innerHTML = '<p style="color: var(--text-muted);"><i class="fas fa-spinner fa-spin"></i> AI analyzing leaf symptoms and cell structures...</p>';
 
   setTimeout(() => {
-    // Pick a random disease from our database to simulate AI detection
     const diseaseNames = Object.keys(diseaseDatabase);
     const randomDisease = diseaseNames[Math.floor(Math.random() * diseaseNames.length)];
     const data = diseaseDatabase[randomDisease];
@@ -330,7 +295,6 @@ function runDiseaseAnalysis() {
       </div>
     `;
 
-    // Animate the confidence bar
     setTimeout(() => {
       const bar = document.getElementById('diseaseConfidenceBar');
       if (bar) bar.style.width = data.confidence + '%';
@@ -352,11 +316,6 @@ function renderDiseaseLibrary() {
     `;
   }).join('');
 }
-
-
-// ==========================================
-// 5. WEATHER FORECAST & ADVICE
-// ==========================================
 
 function renderWeatherPage() {
   const forecastContainer = document.getElementById('weatherForecastCards');
@@ -384,11 +343,6 @@ function renderWeatherPage() {
   }).join('');
 }
 
-
-// ==========================================
-// 6. FERTILIZER RECOMMENDATION
-// ==========================================
-
 function generateFertilizerPlan() {
   const crop = document.getElementById('fertCrop').value;
   const soil = document.getElementById('fertSoil').value;
@@ -401,7 +355,6 @@ function generateFertilizerPlan() {
   let organicAlternatives = [];
   let soilHealthNotes = [];
 
-  // Logic based on NPK inputs
   if (nitrogen < 50) {
     recommendations.push("Urea (46% N)");
     organicAlternatives.push("Aged Cow Manure / Vermicompost");
@@ -423,7 +376,6 @@ function generateFertilizerPlan() {
     soilHealthNotes.push("Soil nutrient balance is good.");
   }
 
-  // pH adjustment advice
   let phAdvice = "Optimal soil pH for crop growth.";
   if (soilPH < 6.0) {
     phAdvice = "Soil is acidic — apply agricultural lime to raise pH.";
@@ -431,7 +383,6 @@ function generateFertilizerPlan() {
     phAdvice = "Soil is alkaline — apply gypsum and organic mulch to lower pH.";
   }
 
-  // Calculate simulated Soil Health Score out of 100
   const scoreN = Math.min(nitrogen, 60) / 60 * 35;
   const scoreP = Math.min(phosphorus, 40) / 40 * 25;
   const scoreK = Math.min(potassium, 60) / 60 * 25;
@@ -461,16 +412,10 @@ function generateFertilizerPlan() {
   }, 100);
 }
 
-
-// ==========================================
-// 7. MARKET INSIGHTS & PRICE TRENDS
-// ==========================================
-
 function updateMarketInsights() {
   const selectedCrop = document.getElementById('marketCropSelect').value;
   const marketInfo = marketPrices[selectedCrop] || marketPrices.Wheat;
 
-  // Render text summary
   const priceChange = ((marketInfo.today - marketInfo.yesterday) / marketInfo.yesterday * 100).toFixed(1);
   const isRising = marketInfo.today >= marketInfo.yesterday;
   const badgeClass = marketInfo.action === 'Sell Now' ? 'badge-red' : marketInfo.action === 'Hold Crop' ? 'badge-green' : 'badge-yellow';
@@ -487,10 +432,8 @@ function updateMarketInsights() {
     <p style="margin-top: 12px; font-size: 0.88rem; color: var(--text-muted);"><b>Market Analysis:</b> ${marketInfo.reason}</p>
   `;
 
-  // Draw chart on canvas
   drawPriceTrendChart(marketInfo.weekly);
 
-  // Render Mandi table
   const mandiContainer = document.getElementById('mandiTableBody');
   mandiContainer.innerHTML = marketMandis.map(m => `
     <tr>
@@ -512,7 +455,6 @@ function drawPriceTrendChart(priceData) {
 
   ctx.clearRect(0, 0, width, height);
 
-  // Get colors from CSS variables
   const computedStyles = getComputedStyle(document.body);
   const primaryColor = computedStyles.getPropertyValue('--primary').trim() || '#2e7d32';
   const mutedColor = computedStyles.getPropertyValue('--text-muted').trim() || '#6b7c6e';
@@ -522,7 +464,6 @@ function drawPriceTrendChart(priceData) {
   const maxPrice = Math.max(...priceData) * 1.02;
   const daysOfWeek = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 
-  // Draw grid lines
   ctx.strokeStyle = borderColor;
   ctx.lineWidth = 1;
   for (let i = 0; i <= 4; i++) {
@@ -532,7 +473,6 @@ function drawPriceTrendChart(priceData) {
     ctx.lineTo(width - 15, y);
     ctx.stroke();
 
-    // Price labels
     ctx.fillStyle = mutedColor;
     ctx.font = '11px Poppins';
     ctx.textAlign = 'right';
@@ -543,7 +483,6 @@ function drawPriceTrendChart(priceData) {
   const getX = (index) => padding + (width - padding - 25) * index / (priceData.length - 1);
   const getY = (value) => padding + (height - 2 * padding) * (1 - (value - minPrice) / (maxPrice - minPrice));
 
-  // Draw gradient area under chart line
   const gradient = ctx.createLinearGradient(0, padding, 0, height - padding);
   gradient.addColorStop(0, primaryColor + '66');
   gradient.addColorStop(1, primaryColor + '00');
@@ -557,7 +496,6 @@ function drawPriceTrendChart(priceData) {
   ctx.fillStyle = gradient;
   ctx.fill();
 
-  // Draw main price line
   ctx.beginPath();
   ctx.moveTo(getX(0), getY(priceData[0]));
   priceData.forEach((val, idx) => ctx.lineTo(getX(idx), getY(val)));
@@ -565,7 +503,6 @@ function drawPriceTrendChart(priceData) {
   ctx.lineWidth = 3;
   ctx.stroke();
 
-  // Draw data dots and day labels
   priceData.forEach((val, idx) => {
     ctx.beginPath();
     ctx.arc(getX(idx), getY(val), 5, 0, Math.PI * 2);
@@ -578,11 +515,6 @@ function drawPriceTrendChart(priceData) {
     ctx.fillText(daysOfWeek[idx], getX(idx), height - padding + 18);
   });
 }
-
-
-// ==========================================
-// 8. GOVERNMENT SCHEMES FILTERING
-// ==========================================
 
 function filterGovernmentSchemes() {
   const searchQuery = document.getElementById('schemeSearchInput').value.toLowerCase();
@@ -623,11 +555,6 @@ function filterGovernmentSchemes() {
   `).join('');
 }
 
-
-// ==========================================
-// 9. CROP INFORMATION SEARCH
-// ==========================================
-
 function searchCropGuides() {
   const query = document.getElementById('cropSearchInput').value.toLowerCase();
   const cropListContainer = document.getElementById('cropGuidesGrid');
@@ -654,11 +581,6 @@ function searchCropGuides() {
   `).join('');
 }
 
-
-// ==========================================
-// 10. FARMING CALENDAR
-// ==========================================
-
 function updateFarmingCalendar() {
   const selectedCrop = document.getElementById('calendarCropSelect').value;
   const calendarSchedule = farmingCalendar[selectedCrop] || farmingCalendar.Rice;
@@ -671,11 +593,6 @@ function updateFarmingCalendar() {
     </div>
   `).join('');
 }
-
-
-// ==========================================
-// 11. CONTACT FORM VALIDATION
-// ==========================================
 
 function handleContactSubmit(event) {
   event.preventDefault();
@@ -707,11 +624,6 @@ function handleContactSubmit(event) {
   return false;
 }
 
-
-// ==========================================
-// 12. AI DECISION SUPPORT GENERATOR
-// ==========================================
-
 function generateAIAdvisoryReport() {
   const crop = document.getElementById('decisionCrop').value;
   const state = document.getElementById('decisionState').value;
@@ -722,7 +634,6 @@ function generateAIAdvisoryReport() {
   const marketInfo = marketPrices[crop] || marketPrices.Wheat;
   const matchingScheme = governmentSchemes.find(s => s.crop === crop || s.state === state) || governmentSchemes[0];
 
-  // Simulate randomized AI calculations
   const healthScore = 65 + Math.floor(Math.random() * 30);
   const riskLevels = ["Low", "Moderate", "High"];
   const diseaseRisk = riskLevels[Math.floor(Math.random() * 3)];
@@ -760,11 +671,6 @@ function generateAIAdvisoryReport() {
   }, 1300);
 }
 
-
-// ==========================================
-// 13. CREDITS SCROLL ANIMATIONS
-// ==========================================
-
 function initCreditsAnimations() {
   const animatedCards = document.querySelectorAll('.team-card[data-animate]');
 
@@ -781,14 +687,9 @@ function initCreditsAnimations() {
 
     animatedCards.forEach(card => observer.observe(card));
   } else {
-    // Fallback for older browsers - show all immediately
     animatedCards.forEach(card => card.classList.add('visible'));
   }
 }
-
-// ==========================================
-// 14. INITIALIZE APP ON PAGE LOAD
-// ==========================================
 
 window.addEventListener('DOMContentLoaded', () => {
   refreshFarmingTip();
